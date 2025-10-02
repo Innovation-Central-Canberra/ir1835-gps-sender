@@ -1,0 +1,22 @@
+descriptor-schema-version: "2.15"
+info:
+  name: "gps-sender-app"
+  description: "GPS Reading from IR1835 LTE Module and Sending to Azure Server"
+  version: "1.0.0"
+
+app:
+  cpuarch: aarch64
+  type: docker
+  resources:
+    profile: custom
+    cpu: 100
+    memory: 128
+    disk: 10
+    network:
+      - interface-name: "eth0"
+        ports:
+          tcp: []
+          udp: []
+  startup:
+    rootfs: rootfs.tar
+    target: ["python3", "gpssender.py"]
